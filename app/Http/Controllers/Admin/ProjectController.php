@@ -16,8 +16,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $project = Project::all();
-        return view('admin.progetti.index', compact('project'));
+        $projects = Project::all();
+        return view('admin.progetti.index', compact('projects'));
     }
 
     /**
@@ -49,7 +49,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+        return view('admin.progetti.show', compact('projects'));
     }
 
     /**
