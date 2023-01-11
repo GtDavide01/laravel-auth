@@ -4,6 +4,15 @@
     <div class="container">
         <h1 class="text-center mt-5">Crea nuovo progetto</h1>
         <div class="row justify-content-center">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div class="col-8">
                 <form action="{{ route('admin.project.store') }}" method="POST">
                     @csrf
