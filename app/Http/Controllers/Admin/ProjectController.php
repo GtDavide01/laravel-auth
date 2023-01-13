@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProjectController extends Controller
@@ -42,6 +43,10 @@ class ProjectController extends Controller
         $data = $request->validated();
         $data['slug'] = Project::generateSlug($data['title']);
         // salvo tutto nel database
+        if ($request->hasFile('image')) {
+            $path = Storage::put('project_images', $data['image']);
+            $data['image'] = $path;
+        }
         $project = Project::create($data);
         //ritorno all'indice 
         return redirect()->route('admin.project.index')->with('message', 'Progetto inserito correttamente!');

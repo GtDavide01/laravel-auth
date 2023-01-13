@@ -14,13 +14,19 @@
                 </div>
             @endif
             <div class="col-8">
-                <form action="{{ route('admin.project.store') }}" method="POST">
+                <form action="{{ route('admin.project.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    {{-- form titolo --}}
                     <div class="form-group mb-3">
                         <label for="title">Titolo</label>
                         <input type="text" id="title" name="title" class="form-control">
                     </div>
-
+                    {{-- form per immagine --}}
+                    <div class="form-group mb-3">
+                        <label for="image">Immagine</label>
+                        <input type="file" id="image" name="image" class="form-control">
+                    </div>
+                    {{-- form per contenuto --}}
                     <div class="form-group mb-3">
                         <label for="content">Contenuto</label>
                         <textarea name="content" id="content" rows="10" class="form-control">

@@ -11,7 +11,7 @@
                     </div>
                 @endif
 
-                <a class="btn btn-success" href="{{ route('admin.project.create') }}">New Project</a>
+
                 <table class="table table-light mt-5">
                     <thead>
                         <tr>

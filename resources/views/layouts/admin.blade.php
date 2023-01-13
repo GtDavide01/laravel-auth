@@ -67,6 +67,13 @@
                                     Progetti
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white {{ Route::currentRouteName() === 'admin.project.create' ? 'bg-info' : '' }}"
+                                    href="{{ route('admin.project.create') }}">
+                                    <i class="fa-solid fa-plus"></i>
+                                    Nuovo Progetto
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </nav>
