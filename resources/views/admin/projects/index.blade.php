@@ -17,6 +17,7 @@
                         <tr>
                             <th scope="col">Titolo</th>
                             <th scope="col">Data di creazione</th>
+                            <th scope="col">Preview Image</th>
                             <th scope="col">Azioni</th>
                         </tr>
                     </thead>
@@ -25,6 +26,17 @@
                             <tr>
                                 <th scope="row">{{ $project->title }}</th>
                                 <td>{{ $project->created_at }}</td>
+                                <td class="w-25">
+                                    @if ($project->image)
+                                        <img class="w-50" src="{{ asset('storage/' . $project->image) }}" alt="">
+                                    @else
+                                        <div class="">
+                                            <img class="w-25"
+                                                src="https://www.associazionejam.it/wp-content/uploads/2017/04/non-disponibile-300x300.png"
+                                                alt="Foto di {{ $project->title }}" style="width:200px">
+                                        </div>
+                                    @endif
+                                </td>
                                 <td>
                                     <a class="btn btn-outline-primary"
                                         href="{{ route('admin.project.show', $project->slug) }}">
