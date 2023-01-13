@@ -26,6 +26,10 @@
                         <label for="image">Immagine</label>
                         <input type="file" id="image" name="image" class="form-control">
                     </div>
+                    {{-- Image preview --}}
+                    <div class="mt-3">
+                        <img id="image_preview" src="" alt="" style="max-height: 200px">
+                    </div>
                     {{-- form per contenuto --}}
                     <div class="form-group mb-3">
                         <label for="content">Contenuto</label>
