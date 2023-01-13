@@ -14,13 +14,20 @@
                         </ul>
                     </div>
                 @endif
-                <form action="{{ route('admin.project.update', $project->slug) }}" method="POST">
+                <form action="{{ route('admin.project.update', $project->slug) }}" method="POST"
+                    enctype="multipart/form-data">
                     @method('PUT')
                     @csrf
                     <div class="form-group">
                         <label for="title">Titolo</label>
                         <input type="text" id="title" name="title" class="form-control"
                             value="{{ old('title', $project->title) }}">
+                    </div>
+
+                    {{-- form per immagine --}}
+                    <div class="form-group mb-3">
+                        <label for="image">Immagine</label>
+                        <input type="file" id="image" name="image" class="form-control">
                     </div>
 
                     <div class="form-group mb-3">

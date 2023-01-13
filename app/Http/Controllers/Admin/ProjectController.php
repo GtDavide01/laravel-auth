@@ -44,7 +44,7 @@ class ProjectController extends Controller
         $data['slug'] = Project::generateSlug($data['title']);
         // salvo tutto nel database
         if ($request->hasFile('image')) {
-            $path = Storage::put('project_images', $data['image']);
+            $path = Storage::put('project_images', $request->image);
             $data['image'] = $path;
         }
         $project = Project::create($data);
@@ -85,6 +85,14 @@ class ProjectController extends Controller
     {
         $data = $request->validated();
         $data['slug'] = Project::generateSlug($data['title']);
+
+        if ($request->hasFile('image')) {
+            if ($project->image) {
+                Storage::delete($project->image);
+            }
+            $path = Storage::put('projects_images', $request->image);
+            $data['image'] = $path;
+        }
         // salvo tutto nel database
         $project->update($data);
         //ritorno all'indice 
